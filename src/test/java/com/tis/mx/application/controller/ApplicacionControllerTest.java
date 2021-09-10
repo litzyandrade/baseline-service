@@ -36,7 +36,7 @@ public class ApplicacionControllerTest {
   
   @Test 
   public void shouldGenerateTableYield() {
-    List<InvestmentYieldDto> tableYield = controller.createTableYield(initialInvestment);
+    List<InvestmentYieldDto> tableYield = controller.createTableYield("application/json",initialInvestment);
     assertEquals(5, tableYield.size());
     
     InvestmentYieldDto firstYear = tableYield.get(0);

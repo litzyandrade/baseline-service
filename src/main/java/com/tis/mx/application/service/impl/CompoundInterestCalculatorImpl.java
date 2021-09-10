@@ -21,7 +21,9 @@ import com.tis.mx.application.service.CompoundInterestCalculator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CompoundInterestCalculatorImpl implements CompoundInterestCalculator {
 
   /**
@@ -59,19 +61,19 @@ public class CompoundInterestCalculatorImpl implements CompoundInterestCalculato
       invYield = (initialBalance + yearlyInput)*(initialInvestment.getInvestmentYield()/100);
       finalBalance =  initialBalance +yearlyInput + invYield;
       finalAmount = finalBalance;
-      output.setInitialInvestment(initialBalance);
-      output.setYearlyInput(yearlyInput);
-      output.setInvestmentYield(invYield);
-      output.setFinalBalance(finalBalance);
+      output.setInitialInvestment(Math.ceil(initialBalance));
+      output.setYearlyInput(Math.ceil(yearlyInput));
+      output.setInvestmentYield(Math.ceil(invYield));
+      output.setFinalBalance(Math.ceil(finalBalance));
       
       list.add(output);
     }
     
     investmentProfit = finalAmount - initialInvestment.getInitialInvestment() - sum;
     
-    System.out.println("Ganancia por inversion: " + investmentProfit);
-    System.out.println("Monto Final: "+ finalAmount);
-    System.out.println(list);
+    //System.out.println("Ganancia por inversion: " + investmentProfit);
+    //System.out.println("Monto Final: "+ finalAmount);
+    //System.out.println(list);
     return list;
   }
 
