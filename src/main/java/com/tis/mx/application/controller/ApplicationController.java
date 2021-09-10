@@ -57,7 +57,7 @@ public class ApplicationController {
       if(calculator.validateInput(initialInvestment)) {
         return calculator.createRevenueGrid(initialInvestment);
       }
-      throw new RuntimeException("No es posible realizar el calculo");
+      throw new CalculatorInputException("No es posible ejecutar el calculo");
      }
     
   
